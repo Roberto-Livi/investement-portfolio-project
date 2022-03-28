@@ -10,9 +10,9 @@ const Entry = () => {
 
   const initialValues: MyFormValues = { username: "", password: ""};
 
-  const onSubmit = (values: any, actions: any) => {
-    console.log(values)
-    console.log(actions)
+  const onSubmit = (values: object, actions: object) => {
+    console.log(typeof values)
+    console.log(typeof actions)
   }
 
   return (
