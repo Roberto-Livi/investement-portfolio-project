@@ -1,12 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Entry from './components/Entry';
+import Homepage from './components/Homepage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Investement Portfolio Project</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Entry/>}/>
+        <Route path="/home" element={<Homepage/>}/>
+      </Routes>
+    </Router>
   );
 }
 
