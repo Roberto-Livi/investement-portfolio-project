@@ -6,13 +6,26 @@ interface MyFormValues {
   password: string
 }
 
-const Entry = () => {
+type Props = {
+  saveUser: (user: IUser | any) => void
+}
+
+export const Entry: React.FC<Props> = ({ saveUser }) => {
 
   const initialValues: MyFormValues = { username: "", password: ""};
 
-  const onSubmit = (values: object, actions: object) => {
-    console.log(typeof values)
-    console.log(typeof actions)
+  const onSubmit = (values: any) => {
+    console.log(values)
+    const user = {
+      id: 2,
+      username: "rob",
+      password: "aa",
+      liquidity: 5000,
+      stocks: [],
+      crypto: [],
+      nfts:[]
+    }
+    saveUser(user);
   }
 
   return (
