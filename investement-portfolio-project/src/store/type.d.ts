@@ -1,8 +1,8 @@
 interface IUser {
-  id: int
+  id: number | null
   username: string
   password: string
-  liquidity: int
+  liquidity: number | null
   stocks: []
   crypto: []
   nfts:[]
@@ -15,7 +15,8 @@ type AppState = {
 
 type UserAction = {
   type: string
-  userInfo: IUser
+  userInfo?: any,
+  loggedIn?: boolean
 }
 
 type DispatchType = (args: UserAction) => UserAction

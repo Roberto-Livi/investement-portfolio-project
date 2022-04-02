@@ -5,14 +5,19 @@ import Entry from './components/Entry';
 import Homepage from './components/Homepage';
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
-import { addUser } from './store/actions';
+import { addUser, changePassword } from './store/actions';
 
 const App: React.FC = () => {
 
   const dispatch: Dispatch<any> = useDispatch();
 
   const saveUser = React.useCallback(
-    (userInfo: IUser) => dispatch(addUser(userInfo)),
+    (loggedIn: boolean, userInfo: IUser) => dispatch(addUser(loggedIn, userInfo)),
+    [dispatch]
+  );
+
+  const savePassword = React.useCallback(
+    (id: number, newPassword: string) => dispatch(changePassword(id, newPassword)),
     [dispatch]
   );
 
@@ -27,7 +32,7 @@ const App: React.FC = () => {
         </Nav>
       </Navbar>
       <Routes>
-        <Route path="/" element={<Entry saveUser={saveUser}/>}/>
+        <Route path="/" element={<Entry saveUser={saveUser} />}/>
         <Route path="/home" element={<Homepage/>}/>
       </Routes>
     </Router>

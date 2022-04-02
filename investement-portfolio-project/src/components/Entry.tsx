@@ -7,7 +7,7 @@ interface MyFormValues {
 }
 
 type Props = {
-  saveUser: (user: IUser | any) => void
+  saveUser: (loggedIn: boolean, user: IUser | any) => void;
 }
 
 export const Entry: React.FC<Props> = ({ saveUser }) => {
@@ -19,13 +19,14 @@ export const Entry: React.FC<Props> = ({ saveUser }) => {
     const user = {
       id: 2,
       username: "rob",
-      password: "aa",
+      password: "pass1",
       liquidity: 5000,
       stocks: [],
       crypto: [],
       nfts:[]
     }
-    saveUser(user);
+    user.password = values.password;
+    saveUser(true, user);
   }
 
   return (

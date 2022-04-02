@@ -19,8 +19,12 @@ const reducer = (
 ): AppState => {
   switch (action.type) {
     case actionTypes.ADD_USER:
-      const newUser: IUser = action.userInfo;
-      return { ...state, userInfo: newUser };
+      return { ...state, userInfo: action.userInfo, loggedIn: action.loggedIn };
+    case actionTypes.CHANGE_PASSWORD:
+    //   const newPassword: string = action.userInfo;
+      return { ...state, userInfo: action.userInfo };
+    default:
+        return state;
     // case actionTypes.REMOVE_ARTICLE:
     //   const updatedArticles: IArticle[] = state.articles.filter(
     //     article => article.id !== action.article.id
