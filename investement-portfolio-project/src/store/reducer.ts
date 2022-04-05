@@ -1,28 +1,31 @@
 import * as actionTypes from './types'
+import produce from 'immer';
+import { InvestementPortfolioApp } from './types';
 
 const initialState: AppState = {
-  userInfo: {
-    id: null,
-    username: "",
-    password: "",
-    liquidity: null,
-    stocks: [],
-    crypto: [],
-    nfts:[]
-  },
+  id: null,
+  username: "",
+  password: "",
+  liquidity: null,
+  stocks: [],
+  crypto: [],
+  nfts:[],
   loggedIn: false
 }
 
 const reducer = (
   state: AppState = initialState,
-  action: any
+  action: InvestementPortfolioApp
 ): AppState => {
   switch (action.type) {
     case actionTypes.ADD_USER:
-      return { ...state, userInfo: action.userInfo, loggedIn: action.loggedIn };
-    case actionTypes.CHANGE_PASSWORD:
-    //   const newPassword: string = action.userInfo;
-      return { ...state, userInfo: action.userInfo };
+      return produce(state, (draft: { username: string; password: string; loggedIn: boolean; }) => { 
+        draft.username = action.username;
+        draft.password = action.password;
+        draft.loggedIn = action.loggedIn;
+    });
+    // case actionTypes.CHANGE_PASSWORD:
+    //   return { ...state, password: action.userInfo };
     default:
         return state;
     // case actionTypes.REMOVE_ARTICLE:
@@ -34,7 +37,6 @@ const reducer = (
     //     articles: updatedArticles,
     //   }
   }
-  return state;
 }
 
 export default reducer

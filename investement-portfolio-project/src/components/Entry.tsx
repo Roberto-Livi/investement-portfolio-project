@@ -1,5 +1,8 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
+import { useDispatch } from 'react-redux';
+import { registerNewUser } from '../store/effects';
+import { useNavigate } from 'react-router-dom';
 
 interface MyFormValues {
   username: string,
@@ -7,26 +10,27 @@ interface MyFormValues {
 }
 
 type Props = {
-  saveUser: (loggedIn: boolean, user: IUser | any) => void;
+  // saveUser: (loggedIn: boolean, user: object | any) => void;
 }
 
-export const Entry: React.FC<Props> = ({ saveUser }) => {
+const Entry: React.FC<Props> = (props) => {
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialValues: MyFormValues = { username: "", password: ""};
 
   const onSubmit = (values: any) => {
     console.log(values)
     const user = {
-      id: 2,
-      username: "rob",
-      password: "pass1",
-      liquidity: 5000,
+      username: values.username,
+      password: values.password,
+      liquidity: 0,
       stocks: [],
       crypto: [],
       nfts:[]
     }
-    user.password = values.password;
-    saveUser(true, user);
+    dispatch(registerNewUser(user, true));
+    navigate("/home");
   }
 
   return (
