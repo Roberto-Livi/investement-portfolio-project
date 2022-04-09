@@ -24,6 +24,17 @@ const reducer = (
         draft.password = action.password;
         draft.loggedIn = action.loggedIn;
     });
+    case actionTypes.LOG_IN:
+      return produce(state, (draft: { id: number, username: string, password: string, liquidity: number, stocks: [], crypto: [], nfts: [], loggedIn: boolean }) => { 
+        draft.loggedIn = action.loggedIn;
+        draft.username = action.username;
+        draft.id = action.id;
+        draft.password = action.password;
+        draft.liquidity = action.liquidity;
+        draft.stocks = action.stocks;
+        draft.crypto = action.crypto;
+        draft.nfts = action.nfts;
+    });
     // case actionTypes.CHANGE_PASSWORD:
     //   return { ...state, password: action.userInfo };
     default:
