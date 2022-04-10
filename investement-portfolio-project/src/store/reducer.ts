@@ -35,8 +35,21 @@ const reducer = (
         draft.crypto = action.crypto;
         draft.nfts = action.nfts;
     });
-    // case actionTypes.CHANGE_PASSWORD:
-    //   return { ...state, password: action.userInfo };
+    case actionTypes.ADD_STOCK:
+      console.log(action.stocks)
+      return produce(state, (draft: { stocks: [] }) => { 
+        draft.stocks = action.stocks;
+    });
+    case actionTypes.ADD_CRYPTO:
+      console.log(action.crypto)
+      return produce(state, (draft: { crypto: [] }) => { 
+        draft.crypto = action.crypto;
+    });
+    case actionTypes.ADD_NFT:
+      console.log(action.nfts)
+      return produce(state, (draft: { nfts: [] }) => { 
+        draft.nfts = action.nfts;
+    });
     default:
         return state;
     // case actionTypes.REMOVE_ARTICLE:

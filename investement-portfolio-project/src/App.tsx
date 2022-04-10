@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import { Navbar, Nav, Container } from 'reactstrap';
 import Entry from './components/Entry';
 import Homepage from './components/Homepage';
+import AddAsset from './components/AddAsset';
 
 const App: React.FC = () => {
 
@@ -15,8 +16,8 @@ const App: React.FC = () => {
         <Navbar sticky='top' expand='lg'>
           <Container>
           { loggedIn && <Nav>
-             <NavLink to="/home">Home</NavLink> 
-              <NavLink to="/">???</NavLink>   
+             <NavLink to="/home">Home</NavLink>
+              <NavLink to="/add-asset">Add Asset</NavLink>
             </Nav>}
           </Container>
         </Navbar>
@@ -25,6 +26,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Entry />}/>
         <Route path="/home" element={<Homepage/>}/>
+        <Route path="/add-asset" element={<AddAsset/>}/>
       </Routes>
     </Router>
   );

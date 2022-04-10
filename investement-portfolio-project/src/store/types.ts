@@ -3,14 +3,26 @@ import { Action } from 'redux';
 export const ADD_USER = "ADD_USER";
 export const LOG_IN = "LOG_IN";
 export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
+export const ADD_STOCK = "ADD_STOCK";
+export const ADD_CRYPTO = "ADD_CRYPTO";
+export const ADD_NFT = "ADD_NFT";
 
 export enum AppTypes {
   ADD_USER = "ADD_USER",
-  LOG_IN = "LOG_IN"
+  LOG_IN = "LOG_IN",
+  ADD_STOCK = "ADD_STOCK",
+  ADD_CRYPTO = "ADD_CRYPTO",
+  ADD_NFT = "ADD_NFT"
 }
 
 export enum SecurityMessages {
   USER_NOT_FOUND = "User Not Found"
+}
+
+export enum Assets {
+  STOCKS = "stocks",
+  CRYPTO = "crypto",
+  NFTS = "nfts"
 }
 
 export interface AddUser extends Action {
@@ -32,6 +44,24 @@ export interface LoginUser extends Action {
   loggedIn: boolean;
 }
 
+export interface AddStock extends Action {
+  type: AppTypes.ADD_STOCK;
+  stocks: [];
+}
+
+export interface AddCrypto extends Action {
+  type: AppTypes.ADD_CRYPTO;
+  crypto: [];
+}
+
+export interface AddNft extends Action {
+  type: AppTypes.ADD_NFT;
+  nfts: [];
+}
+
 export type InvestementPortfolioApp = 
 AddUser |
-LoginUser
+LoginUser |
+AddStock |
+AddCrypto |
+AddNft

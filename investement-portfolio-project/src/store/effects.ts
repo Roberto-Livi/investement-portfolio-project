@@ -1,8 +1,8 @@
 import { ActionCreator, AnyAction, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { registerUser, getUser } from "./actions";
-import { InvestementPortfolioApp } from "./types";
-import { createUser } from "../api/ApiCallCenter";
+import { registerUser, getUser, addStockAction } from "./actions";
+import { InvestementPortfolioApp, Assets } from "./types";
+import { createUser, addAsset } from "../api/ApiCallCenter";
 
 
 export const registerNewUser: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (userInfo: object, loggedIn: boolean) => {
@@ -15,5 +15,26 @@ export const registerNewUser: ActionCreator<ThunkAction<Promise<AnyAction>, AppS
 export const loginUser: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (userInfo: object, loggedIn: boolean) => {
     return async(dispatch: Dispatch) => {
         return dispatch(getUser(userInfo, loggedIn));
+    }
+}
+
+export const addStockEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, stocks: []) => {
+    return async(dispatch: Dispatch) => {
+        addAsset(id, stocks, Assets.STOCKS);
+        return dispatch(addStockAction(stocks));
+    }
+}
+
+export const addCryptoEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, crypto: []) => {
+    return async(dispatch: Dispatch) => {
+        addAsset(id, crypto, Assets.CRYPTO);
+        return dispatch(addStockAction(crypto));
+    }
+}
+
+export const addNftEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, nfts: []) => {
+    return async(dispatch: Dispatch) => {
+        addAsset(id, nfts, Assets.NFTS);
+        return dispatch(addStockAction(nfts));
     }
 }

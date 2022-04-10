@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginUser, registerNewUser } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
 import { retrieveExistingUser } from '../api/ApiCallCenter';
