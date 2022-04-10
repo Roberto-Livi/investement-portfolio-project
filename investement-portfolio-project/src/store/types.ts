@@ -6,13 +6,15 @@ export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
 export const ADD_STOCK = "ADD_STOCK";
 export const ADD_CRYPTO = "ADD_CRYPTO";
 export const ADD_NFT = "ADD_NFT";
+export const LOGOUT = "LOGOUT"; 
 
 export enum AppTypes {
   ADD_USER = "ADD_USER",
   LOG_IN = "LOG_IN",
   ADD_STOCK = "ADD_STOCK",
   ADD_CRYPTO = "ADD_CRYPTO",
-  ADD_NFT = "ADD_NFT"
+  ADD_NFT = "ADD_NFT",
+  LOGOUT = "LOGOUT"
 }
 
 export enum SecurityMessages {
@@ -59,9 +61,14 @@ export interface AddNft extends Action {
   nfts: [];
 }
 
+export interface Logout extends Action {
+  type: AppTypes.LOGOUT;
+}
+
 export type InvestementPortfolioApp = 
 AddUser |
 LoginUser |
 AddStock |
 AddCrypto |
-AddNft
+AddNft |
+Logout

@@ -1,6 +1,6 @@
 import { ActionCreator, AnyAction, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { registerUser, getUser, addStockAction, addCryptoAction, addNftAction } from "./actions";
+import { registerUser, getUser, addStockAction, addCryptoAction, addNftAction, logoutAction } from "./actions";
 import { InvestementPortfolioApp, Assets } from "./types";
 import { createUser, addAsset } from "../api/ApiCallCenter";
 
@@ -36,5 +36,11 @@ export const addNftEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppStat
     return async(dispatch: Dispatch) => {
         addAsset(id, nfts, Assets.NFTS);
         return dispatch(addNftAction(nfts));
+    }
+}
+
+export const logoutEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = () => {
+    return async(dispatch: Dispatch) => {
+        return dispatch(logoutAction());
     }
 }

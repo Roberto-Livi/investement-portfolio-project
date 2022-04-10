@@ -1,12 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { logoutEffect } from '../store/effects';
 
 const Homepage: React.FC = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logout = () => {
-    console.log('logout')
+    dispatch(logoutEffect());
     navigate("/");
   }
   

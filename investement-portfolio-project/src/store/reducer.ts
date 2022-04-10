@@ -36,20 +36,20 @@ const reducer = (
         draft.nfts = action.nfts;
     });
     case actionTypes.ADD_STOCK:
-      console.log(action.stocks)
       return produce(state, (draft: { stocks: [] }) => { 
         draft.stocks = action.stocks;
     });
     case actionTypes.ADD_CRYPTO:
-      console.log(action.crypto)
       return produce(state, (draft: { crypto: [] }) => { 
         draft.crypto = action.crypto;
     });
     case actionTypes.ADD_NFT:
-      console.log(action.nfts)
       return produce(state, (draft: { nfts: [] }) => { 
         draft.nfts = action.nfts;
     });
+    case actionTypes.LOGOUT:
+      console.log(initialState)
+      return initialState;
     default:
         return state;
     // case actionTypes.REMOVE_ARTICLE:
