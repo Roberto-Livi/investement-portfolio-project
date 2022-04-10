@@ -16,7 +16,7 @@ type Props = {
   // saveUser: (loggedIn: boolean, user: object | any) => void;
 }
 
-const Entry: React.FC<Props> = (props) => {
+const Entry: React.FC<Props> = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,8 +33,6 @@ const Entry: React.FC<Props> = (props) => {
       crypto: [],
       nfts:[]
     }
-
-    console.log(formStatus)
 
     if(_.isEqual(formStatus, "login")) {
       login(values.username, values.password);
