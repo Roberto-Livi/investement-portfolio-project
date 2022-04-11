@@ -48,7 +48,6 @@ const reducer = (
         draft.nfts = action.nfts;
     });
     case actionTypes.LOGOUT:
-      console.log(initialState)
       return initialState;
     default:
         return state;

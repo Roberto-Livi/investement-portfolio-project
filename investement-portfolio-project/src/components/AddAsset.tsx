@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCryptoEffect, addNftEffect, addStockEffect, loginUser, registerNewUser } from '../store/effects';
+import { addCryptoEffect, addNftEffect, addStockEffect } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
-import { retrieveExistingUser } from '../api/ApiCallCenter';
-import _, { updateWith } from 'lodash';
+import _ from 'lodash';
 import { Assets } from '../store/types';
-import { addNftAction } from '../store/actions';
 
 interface MyFormValues {
   asset: string,
@@ -14,11 +12,7 @@ interface MyFormValues {
   amountSpent: number | null;
 }
 
-type Props = {
-  // saveUser: (loggedIn: boolean, user: object | any) => void;
-}
-
-const AddAsset: React.FC<Props> = (props) => {
+const AddAsset: React.FC = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,6 +27,7 @@ const AddAsset: React.FC<Props> = (props) => {
   const onSubmit = async (values: any) => {
     let usersAssets: any = [];
     const asset = {
+        internalId: Math.floor(Math.random() * 2000),
         name: values.name,
         amountSpent: values.amountSpent,
         currentWorth: values.amountSpent
@@ -57,6 +52,7 @@ const AddAsset: React.FC<Props> = (props) => {
     } else if(_.isEqual(asset, Assets.NFTS)) {
         dispatch(addNftEffect(userId, usersAssets));
     }
+    navigate("/home");
   }
 
   return (
