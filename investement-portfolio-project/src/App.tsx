@@ -5,6 +5,7 @@ import { Navbar, Nav, Container } from 'reactstrap';
 import Entry from './components/Entry';
 import Homepage from './components/Homepage';
 import AddAsset from './components/AddAsset';
+import ModifyAsset from './components/ModifyAsset';
 
 const App: React.FC = () => {
 
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Entry />}/>
         <Route path="/home" element={<Homepage/>}/>
         <Route path="/add-asset" element={<AddAsset/>}/>
+        <Route path="/modify-asset" element={<ModifyAsset/>}/>
       </Routes>
     </Router>
   );

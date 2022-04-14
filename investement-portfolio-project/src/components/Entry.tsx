@@ -12,11 +12,7 @@ interface MyFormValues {
   password: string
 }
 
-type Props = {
-  // saveUser: (loggedIn: boolean, user: object | any) => void;
-}
-
-const Entry: React.FC<Props> = () => {
+const Entry: React.FC = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,6 +46,7 @@ const Entry: React.FC<Props> = () => {
       navigate("/home");
     }
   }
+  
   const register = (user: object) => {
     dispatch(registerNewUser(user, true));
   }
