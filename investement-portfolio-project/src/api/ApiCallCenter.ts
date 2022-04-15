@@ -13,6 +13,6 @@ export const retrieveExistingUser = async (username: string, password: string) =
     return _.isEmpty(userInfo) ? SecurityMessages.USER_NOT_FOUND : userInfo;
 }
 
-export const addAsset = (id: number, asset: [], type: Assets) => {
-    api.patch(`/users/${id}`, {[type]: asset});
+export const addOrModifyAssets = (id: number | null, assets: any[], type: string) => {
+    api.patch(`/users/${id}`, {[type]: assets});
 }
