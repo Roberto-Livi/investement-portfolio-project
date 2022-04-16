@@ -20,11 +20,12 @@ const Homepage: React.FC = () => {
   return (
     <div>
       <button style={{float: "right"}} type="button" onClick={() => logout()}>Logout</button>
-      <h1>{username}</h1>
-      <h1>Liquidity: {liquidity}</h1>
+      <h1 style={{textAlign: "center"}}>{username}</h1>
+      <h1 >Liquidity: {liquidity}</h1>
       <DataTable />
     </div>
   );
 }
 
 export default Homepage;
+

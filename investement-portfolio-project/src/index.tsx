@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import reducer from './store/reducer';
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
+import './index.css'
 
 declare global {
   interface Window {

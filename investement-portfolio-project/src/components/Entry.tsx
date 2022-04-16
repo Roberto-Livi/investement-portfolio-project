@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { retrieveExistingUser } from '../api/ApiCallCenter';
 import _ from 'lodash';
 import { SecurityMessages } from '../store/types';
+import styled from "styled-components";
 
 interface MyFormValues {
   username: string,
@@ -56,7 +57,7 @@ const Entry: React.FC = () => {
   }
 
   return (
-    <div>
+    <Container>
       <h1>Entry</h1>
       <button type="button" onClick={() => changeFormStatus("login")}>Login</button>
       <button type="button" onClick={() => changeFormStatus("register")}>Register</button>
@@ -69,8 +70,12 @@ const Entry: React.FC = () => {
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-    </div>
+    </Container>
   );
 }
 
 export default Entry;
+
+export const Container = styled.div`
+  
+`

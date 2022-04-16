@@ -26,27 +26,30 @@ const DataTable: React.FC = () => {
 
   return(
     <div>
-      <button type="button" onClick={() => modifyAsset()}>Modify Asset</button>
-      <div style={{ height: 400, width: '80%', display: "flex" }}>
+      <div style={{ height: 400, width: '100%', display: "flex" }}>
         <DataGrid
             rows={stocks}
             columns={columns}
             pageSize={5}
             rowsPerPageOptions={[5]}
+            style={{backgroundColor: "#2F4F4F", color: "white", borderWidth: "thick", margin: "15px"}}
         />
         <DataGrid
             rows={crypto}
             columns={columns}
             pageSize={5}
             rowsPerPageOptions={[5]}
+            style={{backgroundColor: "#6495ED", color: "white", borderWidth: "thick", margin: "15px"}}
         />
         <DataGrid
             rows={nfts}
             columns={columns}
             pageSize={5}
             rowsPerPageOptions={[5]}
+            style={{backgroundColor: "#483D8B", color: "white", borderWidth: "thick", margin: "15px"}}
         />
     </div>
+     <button type="button" onClick={() => modifyAsset()}>Modify Asset</button>
     </div>
   )
 }

@@ -3,9 +3,8 @@ import { Formik, Field, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCryptoEffect, addNftEffect, addStockEffect } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
-import _, { update } from 'lodash';
+import _ from 'lodash';
 import { Assets } from '../store/types';
-import {addOrModifyAssets} from '../api/ApiCallCenter';
 
 interface MyFormValues {
   id: number | null;
@@ -36,26 +35,37 @@ const ModifyAsset: React.FC = () => {
     }
 
     if(_.isEqual(values.assetType, Assets.STOCKS)) {
-      modifyAsset(stocks, modifiedAsset, values.assetType);
+      assetSearch(stocks, modifiedAsset, values.assetType);
     } else if(_.isEqual(values.assetType, Assets.CRYPTO)) {
-      modifyAsset(crypto, modifiedAsset, values.assetType);
+      assetSearch(crypto, modifiedAsset, values.assetType);
     } else if(_.isEqual(values.assetType, Assets.NFTS)) {
-      modifyAsset(nfts, modifiedAsset, values.assetType);
+      assetSearch(nfts, modifiedAsset, values.assetType);
     } else {
       console.log("Asset Type is Required");
     }
 
   }
 
-  const modifyAsset = (assetCollection: [], modifiedAsset: any, assetType: string) => {
+  const assetSearch = (assetCollection: [], modifiedAsset: any, assetType: string) => {
     let updatedAssets: any[] = [...assetCollection];
     const assetIndex: number = assetCollection.findIndex(e => _.isEqual(e['id'], modifiedAsset.id));
     if(assetIndex >= 0 ) {
       updatedAssets[assetIndex] = modifiedAsset;
-      // addOrModifyAssets(userId, updatedAssets, assetType);
+      modifyAsset(updatedAssets, assetType);
     } else {
       console.log("Unable to find asset")
     }
+  }
+
+  const modifyAsset = (assetCollection: any[], assetType: string) => {
+    if(_.isEqual(assetType, Assets.STOCKS)) {
+      dispatch(addStockEffect(userId, assetCollection));
+    } else if(_.isEqual(assetType, Assets.CRYPTO)) {
+      dispatch(addCryptoEffect(userId, assetCollection));
+    } else if(_.isEqual(assetType, Assets.NFTS)) {
+      dispatch(addNftEffect(userId, assetCollection));
+    }
+    navigate("/home");
   }
 
   return (

@@ -14,6 +14,9 @@ export enum AppTypes {
   ADD_STOCK = "ADD_STOCK",
   ADD_CRYPTO = "ADD_CRYPTO",
   ADD_NFT = "ADD_NFT",
+  MODIFY_STOCKS = "MODIFY_STOCKS",
+  MODIFY_CRYPTO = "MODIFY_CRYPTO",
+  MODIFY_NFTS = "MODIFY_NFTS",
   LOGOUT = "LOGOUT"
 }
 
@@ -65,10 +68,28 @@ export interface Logout extends Action {
   type: AppTypes.LOGOUT;
 }
 
+// export interface ModifyStocks extends Action {
+//   type: AppTypes.MODIFY_STOCKS;
+//   stocks: [];
+// }
+
+// export interface ModifyCrypto extends Action {
+//   type: AppTypes.MODIFY_CRYPTO;
+//   crypto: [];
+// }
+
+// export interface ModifyNfts extends Action {
+//   type: AppTypes.MODIFY_NFTS;
+//   nfts: [];
+// }
+
 export type InvestementPortfolioApp = 
 AddUser |
 LoginUser |
 AddStock |
 AddCrypto |
 AddNft |
-Logout
+// ModifyStocks |
+// ModifyCrypto |
+// ModifyNfts |
+Logout 

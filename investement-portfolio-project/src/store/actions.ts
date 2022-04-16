@@ -1,4 +1,6 @@
-import { AddUser, LoginUser, AppTypes, AddStock, AddCrypto, AddNft, Logout } from "./types";
+import { AddUser, LoginUser, AppTypes, AddStock, AddCrypto, AddNft, 
+  // ModifyStocks, ModifyCrypto, ModifyNfts, 
+  Logout } from "./types";
 
 
 export const registerUser = (userInfo: any, loggedIn: boolean): AddUser => {

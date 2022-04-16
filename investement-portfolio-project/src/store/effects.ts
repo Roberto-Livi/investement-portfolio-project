@@ -21,6 +21,7 @@ export const loginUser: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, 
 export const addStockEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, stocks: []) => {
     return async(dispatch: Dispatch) => {
         addOrModifyAssets(id, stocks, Assets.STOCKS);
+        console.log("update")
         return dispatch(addStockAction(stocks));
     }
 }

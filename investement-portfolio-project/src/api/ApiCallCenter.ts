@@ -1,6 +1,6 @@
 import api from '../api/users';
 import _ from 'lodash';
-import { SecurityMessages, Assets } from '../store/types';
+import { SecurityMessages } from '../store/types';
 
 export const createUser = (userInfo: object) => {
     api.post("/users", userInfo);
