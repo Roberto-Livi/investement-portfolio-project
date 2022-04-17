@@ -11,7 +11,7 @@ const ModifyAssetRouteButton: React.FC = () => {
   }
 
   return (
-    <button className="button-78" onClick={() => modifyAsset()}>Modify Asset</button>
+    <button className="button-78" onClick={() => modifyAsset()}>Modify An Asset</button>
   );
 }
 

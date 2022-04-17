@@ -6,6 +6,7 @@ import Entry from './components/Entry';
 import Homepage from './components/Homepage';
 import AddAsset from './components/AddAsset';
 import ModifyAsset from './components/ModifyAsset';
+import NavigationBar from './components/NavigationBar';
 
 const App: React.FC = () => {
 
@@ -14,14 +15,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <header>
-        <Navbar sticky='top' expand='lg'>
-          <Container>
-          { loggedIn && <Nav>
-              <NavLink to="/home">Home</NavLink>
-              <NavLink to="/add-asset">Add Asset</NavLink>
-            </Nav>}
-           </Container>
-        </Navbar>
+        { loggedIn && <NavigationBar /> }
       </header>
     
       <Routes>

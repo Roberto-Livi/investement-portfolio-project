@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import DataTable from './DataTable';
 import styled from 'styled-components';
-import LogoutButton from './LogoutButton';
 import ModifyAssetRouteButton from './ModifyAssetRouteButton';
 
 const Homepage: React.FC = () => {
@@ -12,9 +11,8 @@ const Homepage: React.FC = () => {
   
   return (
     <div>
-      <LogoutButton/>
-      <UsernameHeader style={{textAlign: "center"}}>{username}</UsernameHeader>
-      <h1 >Liquidity: {liquidity}</h1>
+      <LiquidityHeader style={{textAlign: "center"}}>Liquidity: {liquidity}</LiquidityHeader>
+      <h1 >{username}</h1>
       <ModifyAssetRouteButton />
       <DataTable />
     </div>
@@ -23,7 +21,7 @@ const Homepage: React.FC = () => {
 
 export default Homepage;
 
-const UsernameHeader = styled.h1`
+const LiquidityHeader = styled.h1`
   font-weight: 600;
   color: #8A2BE2;
   font-size: 2.2em;
