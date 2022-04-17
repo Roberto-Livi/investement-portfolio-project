@@ -1,17 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { useNavigate } from "react-router-dom";
 
 
 const DataTable: React.FC = () => {
 
-  const navigate = useNavigate();
-
   const stocks: [] = useSelector((state: AppState) => state.stocks);
   const crypto: [] = useSelector((state: AppState) => state.crypto);
   const nfts: [] = useSelector((state: AppState) => state.nfts);
-  const allAssets = [...stocks, ...crypto, ...nfts];
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'Asset ID', width: 100 },
@@ -19,10 +15,6 @@ const DataTable: React.FC = () => {
     { field: 'amountSpent', headerName: 'Amount Spent', width: 130 },
     { field: 'currentWorth', headerName: 'Current Worth', width: 130 }
   ];
-
-  const modifyAsset = () => {
-    navigate("/modify-asset");
-  }
 
   return(
     <div>
@@ -49,7 +41,6 @@ const DataTable: React.FC = () => {
             style={{backgroundColor: "#483D8B", color: "white", borderWidth: "thick", margin: "15px"}}
         />
     </div>
-     <button type="button" onClick={() => modifyAsset()}>Modify Asset</button>
     </div>
   )
 }

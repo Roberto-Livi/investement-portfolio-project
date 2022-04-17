@@ -1,31 +1,39 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logoutEffect } from '../store/effects';
 import DataTable from './DataTable';
+import styled from 'styled-components';
+import LogoutButton from './LogoutButton';
 
 const Homepage: React.FC = () => {
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const username: string = useSelector((state: AppState) => state.username);
   const liquidity: number | null = useSelector((state: AppState) => state.liquidity);
 
-  const logout = () => {
-    dispatch(logoutEffect());
-    navigate("/");
+  const modifyAsset = () => {
+    navigate("/modify-asset");
   }
   
   return (
     <div>
-      <button style={{float: "right"}} type="button" onClick={() => logout()}>Logout</button>
-      <h1 style={{textAlign: "center"}}>{username}</h1>
+      <LogoutButton/>
+      <UsernameHeader style={{textAlign: "center"}}>{username}</UsernameHeader>
       <h1 >Liquidity: {liquidity}</h1>
+      <button type="button" onClick={() => modifyAsset()}>Modify Asset</button>
       <DataTable />
     </div>
   );
 }
 
 export default Homepage;
+
+const UsernameHeader = styled.h1`
+  font-weight: 600;
+  color: #8A2BE2;
+  font-size: 2.2em;
+  text-align: center;
+  font-size: 60px;
+`;
 
