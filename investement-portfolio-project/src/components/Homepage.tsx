@@ -1,27 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import DataTable from './DataTable';
 import styled from 'styled-components';
 import LogoutButton from './LogoutButton';
+import ModifyAssetRouteButton from './ModifyAssetRouteButton';
 
 const Homepage: React.FC = () => {
 
-  const navigate = useNavigate();
-
   const username: string = useSelector((state: AppState) => state.username);
   const liquidity: number | null = useSelector((state: AppState) => state.liquidity);
-
-  const modifyAsset = () => {
-    navigate("/modify-asset");
-  }
   
   return (
     <div>
       <LogoutButton/>
       <UsernameHeader style={{textAlign: "center"}}>{username}</UsernameHeader>
       <h1 >Liquidity: {liquidity}</h1>
-      <button type="button" onClick={() => modifyAsset()}>Modify Asset</button>
+      <ModifyAssetRouteButton />
       <DataTable />
     </div>
   );
