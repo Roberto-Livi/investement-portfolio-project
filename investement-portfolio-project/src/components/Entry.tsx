@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
-import { Formik, Field, Form } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { loginUser, registerNewUser } from '../store/effects';
+import { loginUser } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
 import { retrieveExistingUser } from '../api/ApiCallCenter';
 import _ from 'lodash';
 import { SecurityMessages } from '../store/types';
 import styled from "styled-components";
+import * as Yup from "yup";
+import { createUser } from "../api/ApiCallCenter";
 
 interface MyFormValues {
   username: string,
   password: string
 }
+
+const SignupSchema = Yup.object().shape({
+   username: Yup.string()
+     .min(3, 'Minimum Characters (3)')
+     .max(16, 'Maximum Characters (15)')
+     .required('Required'),
+   password: Yup.string()
+     .min(3, 'Minimum Characters (3)')
+     .required('Required'),
+ });
 
 const Entry: React.FC = () => {
 
@@ -20,6 +32,8 @@ const Entry: React.FC = () => {
   const initialValues: MyFormValues = { username: "", password: ""};
 
   const [formStatus, setFormStatus] = useState("login");
+  const [registered, setRegistered] = useState(false);
+  const [registeredMessage] = useState("You have successfully registered");
 
   const onSubmit = async (values: any) => {
     const user = {
@@ -49,31 +63,44 @@ const Entry: React.FC = () => {
   }
   
   const register = (user: object) => {
-    dispatch(registerNewUser(user, true));
+    createUser(user);
+    setRegistered(true);
   }
 
   const changeFormStatus = (formStatus: string) => {
     setFormStatus(formStatus);
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setRegistered(false);
+    }, 5000)
+  }, [registered])
+
   return (
     <Container>
       <Title>Investement Portfolio Project</Title>
+      { registered && <RegisteredMessage>{registeredMessage}</RegisteredMessage> }
       <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}>
+      onSubmit={onSubmit}
+      validationSchema={SignupSchema}>
+      { !registered && 
         <Form>
           <FormContainer>
             <label>Username</label>
-            <Field style ={{width: "200px", height: "30px", fontSize: "21px"}} name="username" />
+            <Field style ={{width: "200px", height: "30px", fontSize: "21px" }} name="username" />
+            <ErrorMessage name="username" />
             <label>Password</label>
-            <Field style ={{width: "200px", height: "30px", fontSize: "21px"}} className="form-fields" type="password" name="password" />
+            <Field style ={{width: "200px", height: "30px", fontSize: "21px" }} className="form-fields" type="password" name="password" />
+            <ErrorMessage name="password" />
           </FormContainer>
           <ButtonContainer>
               <button className="button-78" type="submit" onClick={() => changeFormStatus("login")}>Login</button>
               <button className="button-78" type="submit" onClick={() => changeFormStatus("register")}>Register</button>
           </ButtonContainer>
         </Form>
+      }
       </Formik>
     </Container>
   );
@@ -89,12 +116,20 @@ const Title = styled.h1`
   font-size: 60px;
 `;
 
+const RegisteredMessage = styled.h1`
+  font-weight: 600;
+  color: #4B0082;
+  font-size: 2.2em;
+  text-align: center;
+  font-size: 60px;
+`;
+
 const ButtonContainer = styled.div`
   margin: auto;
   position: relative;
   width: 15%;
   padding: 10px;
-  top: 15vh;
+  top: 11vh;
 `;
 
 const FormContainer = styled.div`
@@ -102,7 +137,7 @@ const FormContainer = styled.div`
   position: relative;
   flex-direction: column;
   align-items: center;
-  top: 12vh;
+  top: 8vh;
 `;
 
 const Container = styled.div`
