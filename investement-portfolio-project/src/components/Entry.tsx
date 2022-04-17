@@ -58,16 +58,21 @@ const Entry: React.FC = () => {
 
   return (
     <Container>
-      <h1>Entry</h1>
-      <button type="button" onClick={() => changeFormStatus("login")}>Login</button>
-      <button type="button" onClick={() => changeFormStatus("register")}>Register</button>
+      <Title>Investement Portfolio Project</Title>
       <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}>
         <Form>
-          <Field name="username" />
-          <Field name="password" />
-          <button type="submit">Submit</button>
+          <FormContainer>
+            <label>Username</label>
+            <Field style ={{width: "200px", height: "30px", fontSize: "21px"}} name="username" />
+            <label>Password</label>
+            <Field style ={{width: "200px", height: "30px", fontSize: "21px"}} className="form-fields" type="password" name="password" />
+          </FormContainer>
+          <ButtonContainer>
+              <button className="button-78" type="submit" onClick={() => changeFormStatus("login")}>Login</button>
+              <button className="button-78" type="submit" onClick={() => changeFormStatus("register")}>Register</button>
+          </ButtonContainer>
         </Form>
       </Formik>
     </Container>
@@ -76,6 +81,30 @@ const Entry: React.FC = () => {
 
 export default Entry;
 
-export const Container = styled.div`
-  
+const Title = styled.h1`
+  font-weight: 600;
+  color: #8A2BE2;
+  font-size: 2.2em;
+  text-align: center;
+  font-size: 60px;
+`;
+
+const ButtonContainer = styled.div`
+  margin: auto;
+  position: relative;
+  width: 15%;
+  padding: 10px;
+  top: 15vh;
+`;
+
+const FormContainer = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  top: 12vh;
+`;
+
+const Container = styled.div`
+  border: black;
 `
