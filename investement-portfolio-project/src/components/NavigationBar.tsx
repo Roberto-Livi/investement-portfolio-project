@@ -48,6 +48,7 @@ const Theme = {
 
 const Navbar = styled.nav`
   background: ${Theme.colors.dark};
+  font-size: 20px;
   color: ${Theme.colors.light};
   display: flex;
   align-items: center;
@@ -85,7 +86,6 @@ const Li = styled.li`
   align-items: center;
   color: #999;
   display: flex;
-  font-size: 14px;
   height: 50px;
   line-height: 16px;
   margin: 0 10px ;

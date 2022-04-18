@@ -5,6 +5,7 @@ import { addCryptoEffect, addNftEffect, addStockEffect } from '../store/effects'
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
 import { Assets } from '../store/types';
+import styled from 'styled-components';
 
 interface MyFormValues {
   asset: string;
@@ -57,26 +58,28 @@ const AddAsset: React.FC = () => {
 
   return (
     <div>
-      <h1>Add Asset</h1>
+      <Title>Add Asset</Title>
       <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}>
         <Form>
-            <div id="my-radio-group">
+            <RadioGroup>
               <div role="group">
                 <label><Field type="radio" name="asset" value="stocks"/>Stock</label>
                 <label><Field type="radio" name="asset" value="crypto"/>Crypto</label>
                 <label><Field type="radio" name="asset" value="nfts"/>NFT</label>
               </div>
-            </div>
+            </RadioGroup>
 
-            <label htmlFor="name">Name</label>
-            <Field name="name" />
+            <FormGroup>
+              <Label htmlFor="name">Name</Label>
+              <Field name="name" />
 
-            <label htmlFor="amountSpent">Amount Spent</label>
-            <Field name="amountSpent" type="number" />
+              <Label htmlFor="amountSpent">Amount Spent</Label>
+              <Field name="amountSpent" type="number" />
 
-            <button type="submit">Add Asset</button>
+              <button className='button-78' type="submit">Add Asset</button>
+            </FormGroup>
         </Form>
       </Formik>
     </div>
@@ -84,3 +87,30 @@ const AddAsset: React.FC = () => {
 }
 
 export default AddAsset;
+
+const Title = styled.h1`
+  font-weight: 600;
+  font-size: 2.2em;
+  text-align: center;
+  font-size: 60px;
+`;
+
+const RadioGroup = styled.div`
+  font-weight: 600;
+  font-size: 1.8em;
+  text-align: center;
+`;
+
+const FormGroup = styled.div`
+  position: relative;
+  background-color: #8A2BE2;
+  border-radius: 5px;
+  top: 45px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 25px;
+`;
+
+const Label = styled.label`
+  padding: 10px;
+`;

@@ -5,6 +5,7 @@ import { addCryptoEffect, addNftEffect, addStockEffect } from '../store/effects'
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
 import { Assets } from '../store/types';
+import styled from 'styled-components';
 
 interface MyFormValues {
   id: number | null;
@@ -70,32 +71,34 @@ const ModifyAsset: React.FC = () => {
 
   return (
     <div>
-      <h1>Modify Asset</h1>
+      <Title>Modify Asset</Title>
       <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}>
         <Form>
-            <label htmlFor="id">Asset ID</label>
-            <Field type="number" name="id" />
-
-            <div id="my-radio-group">
+            <RadioGroup>
               <div role="group">
                 <label><Field type="radio" name="assetType" value="stocks"/>Stock</label>
                 <label><Field type="radio" name="assetType" value="crypto"/>Crypto</label>
                 <label><Field type="radio" name="assetType" value="nfts"/>NFT</label>
               </div>
-            </div>
+            </RadioGroup>
 
-            <label htmlFor="name">Name</label>
+            <FormGroup>
+            <Label htmlFor="id">Asset ID</Label>
+            <Field type="number" name="id" />
+
+            <Label htmlFor="name">Name</Label>
             <Field name="name" />
 
-            <label htmlFor="amountSpent">Amount Spent</label>
+            <Label htmlFor="amountSpent">Amount Spent</Label>
             <Field name="amountSpent" type="number" />
 
-            <label htmlFor="currentWorth">Current Worth</label>
+            <Label htmlFor="currentWorth">Current Worth</Label>
             <Field name="currentWorth" type="number" />
 
-            <button type="submit">Update Asset</button>
+            <button className='button-78' type="submit">Update Asset</button>
+            </FormGroup>
         </Form>
       </Formik>
     </div>
@@ -103,3 +106,30 @@ const ModifyAsset: React.FC = () => {
 }
 
 export default ModifyAsset;
+
+const Title = styled.h1`
+  font-weight: 600;
+  font-size: 2.2em;
+  text-align: center;
+  font-size: 60px;
+`;
+
+const RadioGroup = styled.div`
+  font-weight: 600;
+  font-size: 1.8em;
+  text-align: center;
+`;
+
+const FormGroup = styled.div`
+  position: relative;
+  top: 45px;
+  background-color: #8A2BE2;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 25px;
+`;
+
+const Label = styled.label`
+  padding: 10px;
+`;

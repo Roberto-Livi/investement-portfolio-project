@@ -40,7 +40,7 @@ const DataTable: React.FC = () => {
             rowsPerPageOptions={[5]}
             style={{backgroundColor: "#483D8B", color: "white", borderWidth: "thick", margin: "15px"}}
         />
-    </div>
+      </div>
     </div>
   )
 }

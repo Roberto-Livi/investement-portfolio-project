@@ -23,9 +23,10 @@ export default Homepage;
 
 const LiquidityHeader = styled.h1`
   font-weight: 600;
-  color: #8A2BE2;
+  color: #4B0082;
   font-size: 2.2em;
   text-align: center;
   font-size: 60px;
 `;
+
 
