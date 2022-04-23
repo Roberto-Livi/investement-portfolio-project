@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCryptoEffect, addNftEffect, addStockEffect } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
@@ -47,6 +47,21 @@ const ModifyAsset: React.FC = () => {
 
   }
 
+  const validate = (values: any) => {
+    const errors: any = {};
+    if(_.isEmpty(values.assetType) || _.isEmpty(values.name) || _.isEqual(values.amountSpent, "" || null) ||  _.isEqual(values.id, "" || null) ||  _.isEqual(values.currentWorth, "" || null)) {
+      console.log("empty")
+      errors.empty = "Can't Leave Field(s) Empty";
+    }
+
+    if(values.amountSpent < 0 || values.currentWorth < 0 || values.id < 0) {
+      console.log("less than zero")
+      errors.lessThanZero = "Can't be less than zero";
+    }
+
+    return errors;
+  }
+
   const assetSearch = (assetCollection: [], modifiedAsset: any, assetType: string) => {
     let updatedAssets: any[] = [...assetCollection];
     const assetIndex: number = assetCollection.findIndex(e => _.isEqual(e['id'], modifiedAsset.id));
@@ -74,8 +89,11 @@ const ModifyAsset: React.FC = () => {
       <Title>Modify Asset</Title>
       <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}>
+      onSubmit={onSubmit}
+      validate={validate}>
         <Form>
+            <ErrorMessage name="emtpy" />
+            <ErrorMessage name="lessThanZero" />
             <RadioGroup>
               <div role="group">
                 <label><Field type="radio" name="assetType" value="stocks"/>Stock</label>
