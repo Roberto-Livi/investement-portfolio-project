@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCryptoEffect, addNftEffect, addStockEffect } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +23,7 @@ const AddAsset: React.FC = () => {
   const crypto: [] = useSelector((state: AppState) => state.crypto);
   const nfts: [] = useSelector((state: AppState) => state.nfts);
 
-  const initialValues: MyFormValues = { asset: "", name: "", amountSpent: null };
+  const initialValues: MyFormValues = { asset: "", name: "", amountSpent: 0 };
 
   const onSubmit = async (values: any) => {
     let usersAssets: any = [];
@@ -56,13 +56,29 @@ const AddAsset: React.FC = () => {
     navigate("/home");
   }
 
+  const validate = (values: any) => {
+    const errors: any = {};
+    if(_.isEmpty(values.asset) || _.isEmpty(values.name) || _.isEqual(values.amountSpent, "")) {
+      errors.empty = "Can't Leave Field(s) Empty";
+    }
+
+    if(values.amountSpent < 0) {
+      errors.lessThanZero = "Amount Spent can't be less than zero";
+    }
+
+    return errors;
+  }
+
   return (
     <div>
       <Title>Add Asset</Title>
       <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}>
+      onSubmit={onSubmit}
+      validate={validate}>
         <Form>
+            <ErrorMessage name="empty" />
+            <ErrorMessage name="lessThanZero" />
             <RadioGroup>
               <div role="group">
                 <label><Field type="radio" name="asset" value="stocks"/>Stock</label>

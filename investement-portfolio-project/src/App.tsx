@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
-import { Navbar, Nav, Container } from 'reactstrap';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Entry from './components/Entry';
 import Homepage from './components/Homepage';
 import AddAsset from './components/AddAsset';
