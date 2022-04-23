@@ -47,6 +47,10 @@ const reducer = (
       return produce(state, (draft: { nfts: [] }) => { 
         draft.nfts = action.nfts;
     });
+    case actionTypes.UPDATE_LIQUIDITY:
+      return produce(state, (draft: { liquidity: number }) => { 
+        draft.liquidity = action.liquidity;
+    });
     case actionTypes.LOGOUT:
       return initialState;
     default:

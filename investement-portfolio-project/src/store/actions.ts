@@ -1,4 +1,4 @@
-import { AddUser, LoginUser, AppTypes, AddStock, AddCrypto, AddNft, Logout } from "./types";
+import { AddUser, LoginUser, AppTypes, AddStock, AddCrypto, AddNft, UpdateLiquidity, Logout } from "./types";
 
 
 export const registerUser = (userInfo: any, loggedIn: boolean): AddUser => {
@@ -42,6 +42,13 @@ export const addNftAction = (nfts: []): AddNft => {
   return({
     type: AppTypes.ADD_NFT,
     nfts
+  })
+}
+
+export const updateLiquidity = (liquidity: number): UpdateLiquidity => {
+  return({
+    type: AppTypes.UPDATE_LIQUIDITY,
+    liquidity
   })
 }
 

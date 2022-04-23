@@ -1,8 +1,8 @@
 import { ActionCreator, AnyAction, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { getUser, addStockAction, addCryptoAction, addNftAction, logoutAction } from "./actions";
+import { getUser, addStockAction, addCryptoAction, addNftAction, updateLiquidity, logoutAction } from "./actions";
 import { InvestementPortfolioApp, Assets } from "./types";
-import { addOrModifyAssets } from "../api/ApiCallCenter";
+import { addOrModifyAssets, apiUpdateUserLiquidity } from "../api/ApiCallCenter";
 
 
 export const loginUser: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (userInfo: object, loggedIn: boolean) => {
@@ -29,6 +29,13 @@ export const addNftEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppStat
     return async(dispatch: Dispatch) => {
         addOrModifyAssets(id, nfts, Assets.NFTS);
         return dispatch(addNftAction(nfts));
+    }
+}
+
+export const updateUserLiquidity: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, liquidity: number) => {
+    return async(dispatch: Dispatch) => {
+        apiUpdateUserLiquidity(id, liquidity);
+        return dispatch(updateLiquidity(liquidity));
     }
 }
 

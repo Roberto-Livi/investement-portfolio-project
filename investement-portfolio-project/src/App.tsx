@@ -6,6 +6,7 @@ import Homepage from './components/Homepage';
 import AddAsset from './components/AddAsset';
 import ModifyAsset from './components/ModifyAsset';
 import NavigationBar from './components/NavigationBar';
+import UpdateLiquidity from './components/UpdateLiquidity';
 
 const App: React.FC = () => {
 
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/home" element={<Homepage/>}/>
         <Route path="/add-asset" element={<AddAsset/>}/>
         <Route path="/modify-asset" element={<ModifyAsset/>}/>
+        <Route path="/update-liquidity" element={<UpdateLiquidity/>}/>
       </Routes>
     </Router>
   );

@@ -16,3 +16,7 @@ export const retrieveExistingUser = async (username: string, password: string) =
 export const addOrModifyAssets = (id: number | null, assets: any[], type: string) => {
     api.patch(`/users/${id}`, {[type]: assets});
 }
+
+export const apiUpdateUserLiquidity = (id: number | null, updatedValue: number) => {
+    api.patch(`/users/${id}`, { liquidity: updatedValue });
+}

@@ -14,7 +14,8 @@ const NavigationBar: React.FC = () => {
     links: [
         { name: "Home", to: "/home" },
         { name: "Add Asset", to: "/add-asset" },
-        { name: "Modify Asset", to: "/modify-asset" }
+        { name: "Modify Asset", to: "/modify-asset" },
+        { name: "Liquidity", to: "/update-liquidity" }
     ]
   }
 

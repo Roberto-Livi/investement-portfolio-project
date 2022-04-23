@@ -6,6 +6,7 @@ export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
 export const ADD_STOCK = "ADD_STOCK";
 export const ADD_CRYPTO = "ADD_CRYPTO";
 export const ADD_NFT = "ADD_NFT";
+export const UPDATE_LIQUIDITY = "UPDATE_LIQUIDITY";
 export const LOGOUT = "LOGOUT"; 
 
 export enum AppTypes {
@@ -17,6 +18,7 @@ export enum AppTypes {
   MODIFY_STOCKS = "MODIFY_STOCKS",
   MODIFY_CRYPTO = "MODIFY_CRYPTO",
   MODIFY_NFTS = "MODIFY_NFTS",
+  UPDATE_LIQUIDITY = "UPDATE_LIQUIDITY",
   LOGOUT = "LOGOUT"
 }
 
@@ -64,24 +66,14 @@ export interface AddNft extends Action {
   nfts: [];
 }
 
+export interface UpdateLiquidity extends Action {
+  type: AppTypes.UPDATE_LIQUIDITY;
+  liquidity: number;
+}
+
 export interface Logout extends Action {
   type: AppTypes.LOGOUT;
 }
-
-// export interface ModifyStocks extends Action {
-//   type: AppTypes.MODIFY_STOCKS;
-//   stocks: [];
-// }
-
-// export interface ModifyCrypto extends Action {
-//   type: AppTypes.MODIFY_CRYPTO;
-//   crypto: [];
-// }
-
-// export interface ModifyNfts extends Action {
-//   type: AppTypes.MODIFY_NFTS;
-//   nfts: [];
-// }
 
 export type InvestementPortfolioApp = 
 AddUser |
@@ -89,7 +81,5 @@ LoginUser |
 AddStock |
 AddCrypto |
 AddNft |
-// ModifyStocks |
-// ModifyCrypto |
-// ModifyNfts |
+UpdateLiquidity |
 Logout 
