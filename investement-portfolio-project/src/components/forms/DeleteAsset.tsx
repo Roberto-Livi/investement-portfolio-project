@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { modifyCryptoEffect, modifyNftsEffect, modifyStocksEffect } from '../store/effects';
+import { modifyCryptoEffect, modifyNftsEffect, modifyStocksEffect } from '../../store/effects';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
 import styled from 'styled-components';
@@ -17,6 +17,7 @@ const DeleteAsset: React.FC = () => {
 
   const [assetType, setAssetType] = useState("");
   const userId: number | null = useSelector((state: AppState) => state.id);
+  const loggedIn: boolean = useSelector((state: AppState) => state.loggedIn);
   const stocks: [] = useSelector((state: AppState) => state.stocks);
   const crypto: [] = useSelector((state: AppState) => state.crypto);
   const nfts: [] = useSelector((state: AppState) => state.nfts);
@@ -74,6 +75,12 @@ const DeleteAsset: React.FC = () => {
       dispatch(modifyNftsEffect(userId, nfts.filter((nft) => nft['id'] !== assetId)));
     }
   }
+
+  useEffect(() => {
+    if(!loggedIn) {
+      navigate("/");
+    }
+  })
 
   return (
     <div>

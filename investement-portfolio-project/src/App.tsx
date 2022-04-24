@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Entry from './components/Entry';
 import Homepage from './components/Homepage';
-import AddAsset from './components/AddAsset';
-import ModifyAsset from './components/ModifyAsset';
+import AddAsset from './components/forms/AddAsset';
+import ModifyAsset from './components/forms/ModifyAsset';
 import NavigationBar from './components/NavigationBar';
-import UpdateLiquidity from './components/UpdateLiquidity';
-import DeleteAsset from './components/DeleteAsset';
+import UpdateLiquidity from './components/forms/UpdateLiquidity';
+import DeleteAsset from './components/forms/DeleteAsset';
 
 const App: React.FC = () => {
 

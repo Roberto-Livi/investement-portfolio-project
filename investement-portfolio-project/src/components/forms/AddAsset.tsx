@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { modifyStocksEffect, modifyCryptoEffect, modifyNftsEffect } from '../store/effects';
+import { modifyStocksEffect, modifyCryptoEffect, modifyNftsEffect } from '../../store/effects';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
-import { Assets } from '../store/types';
+import { Assets } from '../../store/types';
 import styled from 'styled-components';
 
 interface MyFormValues {
@@ -22,6 +22,8 @@ const AddAsset: React.FC = () => {
   const stocks: [] = useSelector((state: AppState) => state.stocks);
   const crypto: [] = useSelector((state: AppState) => state.crypto);
   const nfts: [] = useSelector((state: AppState) => state.nfts);
+  const loggedIn: boolean = useSelector((state: AppState) => state.loggedIn);
+  
 
   const initialValues: MyFormValues = { asset: "", name: "", amountSpent: 0 };
 
@@ -69,6 +71,12 @@ const AddAsset: React.FC = () => {
 
     return errors;
   }
+
+  useEffect(() => {
+    if(!loggedIn) {
+      navigate("/");
+    }
+  })
 
   return (
     <div>

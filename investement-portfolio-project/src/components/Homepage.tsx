@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import DataTable from './DataTable';
 import styled from 'styled-components';
-import ModifyAssetRouteButton from './ModifyAssetRouteButton';
-import DeleteAssetRouteButton from './DeleteAssetRouteButton';
-import AddAssetRouteButton from './AddAssetRouteButton';
+import ModifyAssetRouteButton from './button-routes/ModifyAssetRouteButton';
+import DeleteAssetRouteButton from './button-routes/DeleteAssetRouteButton';
+import AddAssetRouteButton from './button-routes/AddAssetRouteButton';
+import { useNavigate } from 'react-router-dom';
 
 const Homepage: React.FC = () => {
 
   const username: string = useSelector((state: AppState) => state.username);
   const liquidity: number | null = useSelector((state: AppState) => state.liquidity);
+  const loggedIn: boolean = useSelector((state: AppState) => state.loggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!loggedIn){
+      navigate("/")
+    }
+  })
   
   return (
     <div>
