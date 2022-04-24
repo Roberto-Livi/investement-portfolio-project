@@ -1,6 +1,6 @@
 import { ActionCreator, AnyAction, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { getUser, addStockAction, addCryptoAction, addNftAction, updateLiquidity, logoutAction } from "./actions";
+import { getUser, modifyStockAction, modifyCryptoAction, modifyNftAction, updateLiquidity, logoutAction } from "./actions";
 import { InvestementPortfolioApp, Assets } from "./types";
 import { addOrModifyAssets, apiUpdateUserLiquidity } from "../api/ApiCallCenter";
 
@@ -11,28 +11,28 @@ export const loginUser: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, 
     }
 }
 
-export const addStockEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, stocks: []) => {
+export const modifyStocksEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, stocks: []) => {
     return async(dispatch: Dispatch) => {
         addOrModifyAssets(id, stocks, Assets.STOCKS);
-        return dispatch(addStockAction(stocks));
+        return dispatch(modifyStockAction(stocks));
     }
 }
 
-export const addCryptoEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, crypto: []) => {
+export const modifyCryptoEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, crypto: []) => {
     return async(dispatch: Dispatch) => {
         addOrModifyAssets(id, crypto, Assets.CRYPTO);
-        return dispatch(addCryptoAction(crypto));
+        return dispatch(modifyCryptoAction(crypto));
     }
 }
 
-export const addNftEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, nfts: []) => {
+export const modifyNftsEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, nfts: []) => {
     return async(dispatch: Dispatch) => {
         addOrModifyAssets(id, nfts, Assets.NFTS);
-        return dispatch(addNftAction(nfts));
+        return dispatch(modifyNftAction(nfts));
     }
 }
 
-export const updateUserLiquidity: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, liquidity: number) => {
+export const updateLiquidityEffect: ActionCreator<ThunkAction<Promise<AnyAction>, AppState, null, InvestementPortfolioApp>> = (id: number, liquidity: number) => {
     return async(dispatch: Dispatch) => {
         apiUpdateUserLiquidity(id, liquidity);
         return dispatch(updateLiquidity(liquidity));

@@ -92,29 +92,7 @@ body {
   opacity: 0;
 }
 
-/* .button-78:active:not(:disabled) {
-  color: #ccc;
-}
-
-.button-78:active:not(:disabled):before {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #8A2BE2 0, #8A2BE2 100%);
-}
-
-.button-78:active:not(:disabled):after {
-  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
-  bottom: 4px;
-  left: 4px;
-  right: 4px;
-  top: 4px;
-}
-
-.button-78:disabled {
-  cursor: default;
-  opacity: .24;
-} */
-
-
- .button-logout {
+ .button-red {
   align-items: center;
   appearance: none;
   background-clip: padding-box;
@@ -152,17 +130,17 @@ body {
 }
 
 @media (min-width: 768px) {
-  .button-logout {
+  .button-red {
     padding: 19px 32px;
   }
 }
 
-.button-logout:before,
-.button-logout:after {
+.button-red:before,
+.button-red:after {
   border-radius: 80px;
 }
 
-.button-logout:before {
+.button-red:before {
   background-image: linear-gradient(92.83deg, #B22222 0, #B22222 100%);
   content: "";
   display: block;
@@ -175,7 +153,7 @@ body {
   z-index: -2;
 }
 
-.button-logout:after {
+.button-red:after {
   background-color: initial;
   background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
   bottom: 4px;
@@ -190,11 +168,11 @@ body {
   z-index: -1;
 }
 
-.button-logout:hover:not(:disabled):before {
+.button-red:hover:not(:disabled):before {
   background: linear-gradient(92.83deg, #B22222 0%, #B22222 100%);
 }
 
- .button-logout:hover:not(:disabled):after {
+ .button-red:hover:not(:disabled):after {
   bottom: 0;
   left: 0;
   right: 0;

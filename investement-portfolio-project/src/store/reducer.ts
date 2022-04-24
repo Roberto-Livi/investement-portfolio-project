@@ -35,15 +35,15 @@ const reducer = (
         draft.crypto = action.crypto;
         draft.nfts = action.nfts;
     });
-    case actionTypes.ADD_STOCK:
+    case actionTypes.MODIFY_STOCKS:
       return produce(state, (draft: { stocks: [] }) => { 
         draft.stocks = action.stocks;
     });
-    case actionTypes.ADD_CRYPTO:
+    case actionTypes.MODIFY_CRYPTO:
       return produce(state, (draft: { crypto: [] }) => { 
         draft.crypto = action.crypto;
     });
-    case actionTypes.ADD_NFT:
+    case actionTypes.MODIFY_NFTS:
       return produce(state, (draft: { nfts: [] }) => { 
         draft.nfts = action.nfts;
     });
@@ -55,14 +55,6 @@ const reducer = (
       return initialState;
     default:
         return state;
-    // case actionTypes.REMOVE_ARTICLE:
-    //   const updatedArticles: IArticle[] = state.articles.filter(
-    //     article => article.id !== action.article.id
-    //   )
-    //   return {
-    //     ...state,
-    //     articles: updatedArticles,
-    //   }
   }
 }
 

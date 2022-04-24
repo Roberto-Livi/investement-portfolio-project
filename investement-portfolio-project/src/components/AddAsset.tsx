@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCryptoEffect, addNftEffect, addStockEffect } from '../store/effects';
+import { modifyStocksEffect, modifyCryptoEffect, modifyNftsEffect } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
 import { Assets } from '../store/types';
@@ -47,12 +47,13 @@ const AddAsset: React.FC = () => {
   const updateAssets = (asset: string, usersAssets: []) => {
       console.log(usersAssets)
     if(_.isEqual(asset, Assets.STOCKS)) {
-        dispatch(addStockEffect(userId, usersAssets));
+        dispatch(modifyStocksEffect(userId, usersAssets));
     } else if(_.isEqual(asset, Assets.CRYPTO)) {
-        dispatch(addCryptoEffect(userId, usersAssets));
+        dispatch(modifyCryptoEffect(userId, usersAssets));
     } else if(_.isEqual(asset, Assets.NFTS)) {
-        dispatch(addNftEffect(userId, usersAssets));
+        dispatch(modifyNftsEffect(userId, usersAssets));
     }
+
     navigate("/home");
   }
 

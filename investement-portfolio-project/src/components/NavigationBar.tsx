@@ -59,6 +59,7 @@ const Navbar = styled.nav`
 
 const Logout = styled.a`
   font-weight: bold;
+  color: red;
   font-style: italic;
   margin-left: 1rem;
   padding-right: 1rem;

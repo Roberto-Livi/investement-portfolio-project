@@ -3,18 +3,15 @@ import { Action } from 'redux';
 export const ADD_USER = "ADD_USER";
 export const LOG_IN = "LOG_IN";
 export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
-export const ADD_STOCK = "ADD_STOCK";
-export const ADD_CRYPTO = "ADD_CRYPTO";
-export const ADD_NFT = "ADD_NFT";
+export const MODIFY_STOCKS = "MODIFY_STOCKS";
+export const MODIFY_CRYPTO = "MODIFY_CRYPTO";
+export const MODIFY_NFTS = "MODIFY_NFTS";
 export const UPDATE_LIQUIDITY = "UPDATE_LIQUIDITY";
 export const LOGOUT = "LOGOUT"; 
 
 export enum AppTypes {
   ADD_USER = "ADD_USER",
   LOG_IN = "LOG_IN",
-  ADD_STOCK = "ADD_STOCK",
-  ADD_CRYPTO = "ADD_CRYPTO",
-  ADD_NFT = "ADD_NFT",
   MODIFY_STOCKS = "MODIFY_STOCKS",
   MODIFY_CRYPTO = "MODIFY_CRYPTO",
   MODIFY_NFTS = "MODIFY_NFTS",
@@ -51,18 +48,18 @@ export interface LoginUser extends Action {
   loggedIn: boolean;
 }
 
-export interface AddStock extends Action {
-  type: AppTypes.ADD_STOCK;
+export interface ModifyStocks extends Action {
+  type: AppTypes.MODIFY_STOCKS;
   stocks: [];
 }
 
-export interface AddCrypto extends Action {
-  type: AppTypes.ADD_CRYPTO;
+export interface ModifyCrypto extends Action {
+  type: AppTypes.MODIFY_CRYPTO;
   crypto: [];
 }
 
-export interface AddNft extends Action {
-  type: AppTypes.ADD_NFT;
+export interface ModifyNfts extends Action {
+  type: AppTypes.MODIFY_NFTS;
   nfts: [];
 }
 
@@ -78,8 +75,8 @@ export interface Logout extends Action {
 export type InvestementPortfolioApp = 
 AddUser |
 LoginUser |
-AddStock |
-AddCrypto |
-AddNft |
+ModifyStocks |
+ModifyCrypto |
+ModifyNfts |
 UpdateLiquidity |
 Logout 

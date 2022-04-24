@@ -6,12 +6,12 @@ const ModifyAssetRouteButton: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const modifyAsset = () => {
+  const modifyAssetPage = () => {
     navigate("/modify-asset");
   }
 
   return (
-    <button className="button-78" onClick={() => modifyAsset()}>Modify An Asset</button>
+    <button className="button-78" onClick={() => modifyAssetPage()}>Modify An Asset</button>
   );
 }
 

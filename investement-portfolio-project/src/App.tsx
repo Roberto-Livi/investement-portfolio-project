@@ -7,6 +7,7 @@ import AddAsset from './components/AddAsset';
 import ModifyAsset from './components/ModifyAsset';
 import NavigationBar from './components/NavigationBar';
 import UpdateLiquidity from './components/UpdateLiquidity';
+import DeleteAsset from './components/DeleteAsset';
 
 const App: React.FC = () => {
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <Route path="/add-asset" element={<AddAsset/>}/>
         <Route path="/modify-asset" element={<ModifyAsset/>}/>
         <Route path="/update-liquidity" element={<UpdateLiquidity/>}/>
+        <Route path="/delete-asset" element={<DeleteAsset/>}/>
       </Routes>
     </Router>
   );

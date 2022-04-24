@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUserLiquidity } from '../store/effects';
+import { updateLiquidityEffect } from '../store/effects';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
 import styled from 'styled-components';
@@ -21,7 +21,7 @@ const UpdateLiquidity: React.FC = () => {
   const initialValues: MyFormValues = { liquidity: userLiquidity};
 
   const onSubmit = async (values: any) => {
-    dispatch(updateUserLiquidity(userId, values.liquidity));
+    dispatch(updateLiquidityEffect(userId, values.liquidity));
     navigate("/home");
   }
 

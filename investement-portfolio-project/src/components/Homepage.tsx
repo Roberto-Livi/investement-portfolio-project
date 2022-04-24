@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import DataTable from './DataTable';
 import styled from 'styled-components';
 import ModifyAssetRouteButton from './ModifyAssetRouteButton';
+import DeleteAssetRouteButton from './DeleteAssetRouteButton';
+import AddAssetRouteButton from './AddAssetRouteButton';
 
 const Homepage: React.FC = () => {
 
@@ -11,9 +13,11 @@ const Homepage: React.FC = () => {
   
   return (
     <div>
-      <LiquidityHeader style={{textAlign: "center"}}>Liquidity: {liquidity}</LiquidityHeader>
+      <LiquidityHeader>Liquidity: {liquidity}</LiquidityHeader>
       <h1 >{username}</h1>
       <ModifyAssetRouteButton />
+      <AddAssetRouteButton />
+      <DeleteAssetRouteButton />
       <DataTable />
     </div>
   );
